@@ -1,2 +1,0 @@
-# secondProject2
-clone

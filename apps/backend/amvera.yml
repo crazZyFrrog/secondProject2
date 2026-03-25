@@ -1,0 +1,14 @@
+meta:
+  environment: docker
+  toolchain:
+    name: docker
+    version: latest
+
+build:
+  dockerfile: Dockerfile
+
+run:
+  image: auto
+  command: ""
+  persistenceMount: /data
+  containerPort: 8000

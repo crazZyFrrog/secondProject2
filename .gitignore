@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+.env.local
+*.db
+apps/backend/e2e.sqlite
+apps/backend/local.db
+__pycache__
+.pytest_cache
+.venv
+venv
+*.pyc
+playwright-report
+test-results
