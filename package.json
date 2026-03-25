@@ -2,17 +2,19 @@
   "name": "landing-builder-monorepo",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n fe,be -c blue,green \"npm run dev --prefix apps/frontend\" \"npm run dev --prefix apps/backend\"",
-    "dev:e2e": "cross-env DATABASE_URL=sqlite:///e2e.sqlite JWT_SECRET=e2e-jwt-secret-min-32-characters-long-xx CORS_ORIGINS=http://127.0.0.1:5173 AUTO_CREATE_TABLES=1 concurrently -n fe,be -c blue,green \"npm run dev --prefix apps/frontend\" \"npm run dev --prefix apps/backend\"",
-    "dev:be:e2e": "cross-env DATABASE_URL=sqlite:///e2e.sqlite JWT_SECRET=e2e-jwt-secret-min-32-characters-long-xx CORS_ORIGINS=http://127.0.0.1:5173 AUTO_CREATE_TABLES=1 npm run dev --prefix apps/backend",
-    "dev:fe:e2e": "npm run dev --prefix apps/frontend",
-    "build": "npm run build --prefix apps/frontend",
+    "dev": "concurrently -n fe,be -c blue,green \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"",
+    "dev:e2e": "cross-env DATABASE_URL=sqlite:///e2e.sqlite JWT_SECRET=e2e-jwt-secret-min-32-characters-long-xx CORS_ORIGINS=http://127.0.0.1:5173 AUTO_CREATE_TABLES=1 concurrently -n fe,be -c blue,green \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"",
+    "dev:be:e2e": "cross-env DATABASE_URL=sqlite:///e2e.sqlite JWT_SECRET=e2e-jwt-secret-min-32-characters-long-xx CORS_ORIGINS=http://127.0.0.1:5173 AUTO_CREATE_TABLES=1 npm run dev --prefix backend",
+    "dev:fe:e2e": "npm run dev --prefix frontend",
+    "build": "npm run build --prefix frontend",
     "test:e2e": "playwright test --config tests/e2e/playwright.config.cjs",
-    "test:backend": "cd apps/backend && pytest -q"
+    "test:backend": "cd backend && pytest -q",
+    "stop:dev": "kill-port 5173 8000"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
     "concurrently": "^9.1.2",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "kill-port": "^2.0.1"
   }
 }
